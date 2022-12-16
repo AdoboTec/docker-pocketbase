@@ -24,7 +24,7 @@ jobs:
       directory: .
       image_name: pocketbase
       image_version: ${{ needs.check.outputs.repo_version }}
-      docker_owner: AdoboTec
+      docker_owner: adobotec
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
