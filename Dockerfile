@@ -1,11 +1,10 @@
 FROM alpine:latest AS builder
 
-ARG IMG_VERSION
+ARG IMG_VERSION=0
 
 RUN apk add --no-cache \
     unzip \
     ca-certificates
-
 
 # download and unzip PocketBase
 ADD https://github.com/pocketbase/pocketbase/releases/download/v${IMG_VERSION}/pocketbase_${IMG_VERSION}_linux_amd64.zip /tmp/pb.zip
