@@ -1,6 +1,6 @@
 FROM alpine:latest AS builder
 
-ARG VERSION
+ARG IMG_VERSION
 
 RUN apk add --no-cache \
     unzip \
@@ -8,7 +8,7 @@ RUN apk add --no-cache \
 
 
 # download and unzip PocketBase
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${VERSION}/pocketbase_${VERSION}_linux_amd64.zip /tmp/pb.zip
+ADD https://github.com/pocketbase/pocketbase/releases/download/v${IMG_VERSION}/pocketbase_${IMG_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
 
 FROM alpine:latest
