@@ -22,6 +22,7 @@ jobs:
     if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) }}
     with:
       directory: .
+      image_name: pocketbase
       image_version: ${{ needs.check.outputs.repo_version }}
       docker_owner: AdoboTec
     secrets:
