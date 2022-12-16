@@ -1,0 +1,29 @@
+name: Pocketbase
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['pocketbase/**']
+  schedule:
+    # Runs "At 01:00." (see https://crontab.guru)
+    - cron: '0 1 * * *'
+
+jobs:
+  check:
+    uses: AdoboTec/reusable-workflows/.github/workflows/compare_github_docker_tags.yml@main
+    with:
+      repo_github: pocketbase/pocketbase
+      repo_docker: chaudric/pocketbase
+
+  build_scan_push:
+    uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
+    needs: check
+    if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) }}
+    with:
+      directory: .
+      image_version: ${{ needs.check.outputs.repo_version }}
+      docker_owner: AdoboTec
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
