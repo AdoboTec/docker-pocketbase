@@ -16,7 +16,7 @@ jobs:
       repo_github: pocketbase/pocketbase
       repo_docker: chaudric/pocketbase
 
-  build_scan_push:
+  build_push:
     uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
     needs: check
     if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) }}
