@@ -32,7 +32,7 @@ jobs:
   docker_test:
     needs: check
     runs-on: [ ubuntu-latest ]
-    container: curlimages/cur
+    container: curlimages/curl
 
     services:
       pocketbase:
