@@ -12,6 +12,8 @@ RUN unzip /tmp/pb.zip -d /pb/
 
 FROM alpine:latest
 
+COPY --from=builder /pb/ /pb/
+
 RUN addgroup -S pocketbase -g 1001 && \ 
     adduser -S pocketbase -G pocketbase -u 1001 -H -D && \
     chown pocketbase:pocketbase -R /pb/
@@ -20,8 +22,6 @@ RUN apk add --no-cache \
     ca-certificates
 
 USER pocketbase
-
-COPY --from=builder /pb/ /pb/
 
 EXPOSE 8080
 
