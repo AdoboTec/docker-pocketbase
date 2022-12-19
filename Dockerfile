@@ -13,7 +13,8 @@ RUN unzip /tmp/pb.zip -d /pb/
 FROM alpine:latest
 
 RUN addgroup -S pocketbase -g 1001 && \ 
-    adduser -S pocketbase -G pocketbase -u 1001 -H -D
+    adduser -S pocketbase -G pocketbase -u 1001 -H -D && \
+    chown pocketbase:pocketbase -R /pb/
 
 RUN apk add --no-cache \
     ca-certificates
