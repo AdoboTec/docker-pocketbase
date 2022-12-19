@@ -28,9 +28,7 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - pocketbase-data:/pb/pb_data
-      - pocketbase-public:/pb/pb_public
+      - pocketbase-vol:/pb/
 volumes:
-  pocketbase-data:
-  pocketbase-public:
+  pocketbase-vol:
 ```
