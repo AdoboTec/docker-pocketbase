@@ -30,7 +30,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   docker_test:
-    needs: check
+    needs: docker_hub
     runs-on: [ ubuntu-latest ]
     container: curlimages/curl
 
