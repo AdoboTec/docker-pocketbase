@@ -40,4 +40,4 @@ jobs:
 
     steps:
       - name: Check api/health
-        run: curl -f -LI http://pocketbase:8080/api/health
+        run: curl -X GET -f -LI http://pocketbase:8080/api/health
