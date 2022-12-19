@@ -28,3 +28,15 @@ jobs:
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+  docker_test:
+    runs-on: [ ubuntu-latest ]
+    container: curlimages/cur
+
+    services:
+      pocketbase:
+        image: adobotec/pocketbase:${{ needs.check.outputs.repo_version }}
+
+    steps:
+      - name: Check api/health
+        run: curl -f -LI http://pocketbase:8080/api/health
