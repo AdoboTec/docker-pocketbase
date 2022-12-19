@@ -30,6 +30,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   docker_test:
+    needs: check
     runs-on: [ ubuntu-latest ]
     container: curlimages/cur
 
