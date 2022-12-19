@@ -11,8 +11,7 @@ UNOFFICIAL Pocketbase Docker Image
 ```bash
 docker run --name pocketbase \
     -p 8080:8080 \
-    -v pocketbase-data:/pb/pb_data \
-    -v pocketbase-public:/pb/pb_public \
+    -v <path>:/pb/ \
     adobotec/pocketbase:latest 
 ```
 ## Docker Compose
