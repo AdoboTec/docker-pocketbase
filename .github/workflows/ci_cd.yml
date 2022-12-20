@@ -6,8 +6,8 @@ on:
     branches: [main]
     paths: ['pocketbase/**']
   schedule:
-    # Runs "At 01:00." (see https://crontab.guru)
-    - cron: '0 1 * * *'
+    # Runs "At minute 15 past every 3rd hour." (see https://crontab.guru)
+    - cron: '15 */3 * * *'
 
 jobs:
   check:
