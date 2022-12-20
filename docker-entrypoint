@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# PB DATA DIR
+if [[ -z "${PB_DATA}" ]]; then
+  DIR_DATA="/pb/pb_data"
+else
+  DIR_DATA="${PB_DATA}"
+fi
+
+# PB PUBLIC DIR
+if [[ -z "${PB_PUBLIC}" ]]; then
+  DIR_PUBLIC="/pb/pb_public"
+else
+  DIR_PUBLIC="${PB_PUBLIC}"
+fi
+
+# PB MIGRATION DIR
+if [[ -z "${PB_MIGRATION}" ]]; then
+  DIR_MIGRATION="/pb/pb_migrations"
+else
+  DIR_MIGRATION="${PB_MIGRATION}"
+fi
+
+# PB ENCRYPTION KEY
+if [[ -z "${PB_ENCRYPTION_KEY}" ]]; then
+  ENCRYPTION_CMD=""
+else
+  ENCRYPTION_CMD="--encryptionEnv=${PB_ENCRYPTION_KEY}"
+fi
+
+if [[ $1 == "serve" ]]; then
+   /pocketbase serve --http=0.0.0.0:8080 --dir=${DIR_DATA} --publicDir=${DIR_PUBLIC} --migrationsDir=${DIR_MIGRATION} ${ENCRYPTION_CMD}
+fi
+
+exec "$@"

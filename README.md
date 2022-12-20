@@ -32,3 +32,11 @@ services:
 volumes:
   pocketbase-vol:
 ```
+
+## Environment Variables
+| Variable          | Description             | Default            |
+| ----------------- | ----------------------- | ------------------ |
+| PB_DATA           | PB Data Directory       | /pb/pb_data        |
+| PB_PUBLIC         | PB Public Directory     | /pb/pb_public      |
+| PB_MIGRATION      | PB Migration Directory  | /pb/pb_migrations  | 
+| PB_ENCRYPTION_KEY | PB Encryption Key       | None               |
