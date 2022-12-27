@@ -19,7 +19,7 @@ jobs:
   docker_hub:
     uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
     needs: check
-    if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) }}
+    if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) && needs.check.outputs.repo_version != 'null' }}
     with:
       directory: .
       image_name: pocketbase
