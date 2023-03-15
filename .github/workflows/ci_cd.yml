@@ -14,7 +14,7 @@ jobs:
     uses: AdoboTec/reusable-workflows/.github/workflows/compare_github_docker_tags.yml@main
     with:
       repo_github: pocketbase/pocketbase
-      repo_docker: adobotec/pocketbase
+      repo_docker: ${{ github.repository }}
 
   docker_hub:
     uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
@@ -22,9 +22,8 @@ jobs:
     if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) && needs.check.outputs.repo_version != 'null' }}
     with:
       directory: .
-      image_name: pocketbase
       image_version: ${{ needs.check.outputs.repo_version }}
-      docker_owner: adobotec
+
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -36,7 +35,7 @@ jobs:
 
     services:
       pocketbase:
-        image: adobotec/pocketbase:latest
+        image: ghcr.io/${{ github.repository }}:latest
 
     steps:
       - name: Check api/health
