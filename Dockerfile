@@ -11,7 +11,6 @@ ADD https://github.com/pocketbase/pocketbase/releases/download/v${IMG_VERSION}/p
 RUN unzip /tmp/pb.zip -d /pb/
 
 FROM alpine:latest
-LABEL org.opencontainers.image.source https://github.com/AdoboTec/docker-pocketbase
 
 COPY --from=builder /pb/pocketbase /pocketbase
 COPY docker-entrypoint /
