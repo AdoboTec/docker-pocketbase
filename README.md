@@ -12,7 +12,7 @@ UNOFFICIAL Pocketbase Docker Image
 docker run --name pocketbase \
     -p 8080:8080 \
     -v <path>:/pb/ \
-    adobotec/pocketbase:latest 
+    ghcr.io/adobotec/docker-pocketbase:latest
 ```
 ## Docker Compose
 
@@ -23,7 +23,7 @@ version: '3.7'
 
 services:
   pocketbase:
-    image: adobotec/pocketbase:latest 
+    image: ghcr.io/adobotec/docker-pocketbase:latest
     restart: unless-stopped
     ports:
       - 8080:8080
