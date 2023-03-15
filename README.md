@@ -7,6 +7,8 @@ UNOFFICIAL Pocketbase Docker Image
 
 [PocketBase](https://pocketbase.io) is an open source Go backend.
 
+[Image Tags](https://github.com/AdoboTec/docker-pocketbase/pkgs/container/docker-pocketbase)
+
 ## Docker Run
 ```bash
 docker run --name pocketbase \
