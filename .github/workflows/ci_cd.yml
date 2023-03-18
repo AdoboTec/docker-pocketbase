@@ -16,17 +16,25 @@ jobs:
       repo_github: pocketbase/pocketbase
       repo_docker: ${{ github.repository }}
 
-  docker_hub:
-    uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
-    needs: check
-    if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) && needs.check.outputs.repo_version != 'null' }}
-    with:
-      directory: .
-      image_version: ${{ needs.check.outputs.repo_version }}
+  testing:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: docker_version
+        run: echo "${{ needs.check.outputs.docker_version }}"
+      - name: repo_version
+        run: echo "${{ needs.check.outputs.repo_version}}"
 
-    secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  # docker_hub:
+  #   uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
+  #   needs: check
+  #   if: ${{ !contains(needs.check.outputs.docker_version, needs.check.outputs.repo_version) && needs.check.outputs.repo_version != 'null' }}
+  #   with:
+  #     directory: .
+  #     image_version: ${{ needs.check.outputs.repo_version }}
+
+  #   secrets:
+  #     DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  #     DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
   # docker_test:
   #   needs: docker_hub
