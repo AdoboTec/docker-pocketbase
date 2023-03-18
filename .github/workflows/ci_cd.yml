@@ -20,9 +20,9 @@ jobs:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: docker_version
-        run: echo "${{ needs.check.outputs.docker_version }}"
+        run: echo ${{ needs.check.outputs.docker_version }}
       - name: repo_version
-        run: echo "${{ needs.check.outputs.repo_version}}"
+        run: echo ${{ needs.check.outputs.repo_version }}
 
   # docker_hub:
   #   uses:  AdoboTec/reusable-workflows/.github/workflows/image_build_push.yml@main
