@@ -28,8 +28,20 @@ else
   ENCRYPTION_CMD="--encryptionEnv=${PB_ENCRYPTION_KEY}"
 fi
 
+# PB ORIGINS
+if [[ -z "${PB_ORIGINS}" ]]; then
+  ORIGINS="*"
+else
+  ORIGINS="${PB_ORIGINS}"
+fi
+
 if [[ $1 == "serve" ]]; then
-   /pocketbase serve --http=0.0.0.0:8080 --dir=${DIR_DATA} --publicDir=${DIR_PUBLIC} --migrationsDir=${DIR_MIGRATION} ${ENCRYPTION_CMD}
+   /pocketbase serve --http=0.0.0.0:8080 \
+      --dir=${DIR_DATA} \
+      --publicDir=${DIR_PUBLIC} \
+      --migrationsDir=${DIR_MIGRATION} \
+      ${ENCRYPTION_CMD} \
+      --origins ${ORIGINS}
 fi
 
 exec "$@"
