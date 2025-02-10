@@ -43,10 +43,10 @@ else
 fi
 
 # PB PUBLIC DIR
-if [[ -z "${PB_PUBLIC}" ]]; then
-  DIR_PUBLIC="/pb/pb_hooks"
+if [[ -z "${PB_HOOKS}" ]]; then
+  DIR_HOOKS="/pb/pb_hooks"
 else
-  DIR_PUBLIC="${PB_PUBLIC}"
+  DIR_HOOKS="${PB_HOOKS}"
 fi
 
 if [[ $1 == "serve" ]]; then
