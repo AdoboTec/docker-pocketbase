@@ -35,13 +35,29 @@ else
   ORIGINS="${PB_ORIGINS}"
 fi
 
+# PB Hooks Pool
+if [[ -z "${PB_HOOKSPOOL}" ]]; then
+  HOOKSPOOL="15"
+else
+  HOOKSPOOL="${PB_HOOKSPOOL}"
+fi
+
+# PB PUBLIC DIR
+if [[ -z "${PB_PUBLIC}" ]]; then
+  DIR_PUBLIC="/pb/pb_hooks"
+else
+  DIR_PUBLIC="${PB_PUBLIC}"
+fi
+
 if [[ $1 == "serve" ]]; then
    /pocketbase serve --http=0.0.0.0:8080 \
       --dir=${DIR_DATA} \
       --publicDir=${DIR_PUBLIC} \
       --migrationsDir=${DIR_MIGRATION} \
       ${ENCRYPTION_CMD} \
-      --origins ${ORIGINS}
+      --origins ${ORIGINS} \
+      --hooksPool ${HOOKSPOOL} \
+      --hooksDir ${DIR_HOOKS}
 fi
 
 exec "$@"
